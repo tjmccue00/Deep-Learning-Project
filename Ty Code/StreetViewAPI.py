@@ -38,7 +38,7 @@ class GStreetViewer(object):
             return meta_info, None
 
 if __name__ == "__main__":
-    api_key = "AIzaSyAcbe0rC7u6aI-asYUOysQGzveaXaYZYFM"
+    api_key = ""
     picGrabber = GStreetViewer(api_key)
 
     picGrabber.get_pic('800 21st St NW, Washington, DC 20052', r"/Users/tylermccue/Downloads/", "test")
