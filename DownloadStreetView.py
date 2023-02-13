@@ -36,7 +36,7 @@ class GoogleStreetView:
         self.params = [{
                 'size': '640x640', # max 640x640 pixels
                 'location': '0,0',
-                'radius' : '5000',
+                'radius' : '100000',
                 'heading': '0',
                 'pitch': '0',
                 'key' : self.api
@@ -45,7 +45,7 @@ class GoogleStreetView:
         ## Establish download path
         self.directory = os.getcwdb().decode()
         self.download_path = os.path.join(self.directory, '')
-        print("DL Path: ", self.download_path)
+        # print("DL Path: ", self.download_path)
         
     def encode_url(self):
         ## Encodes the parameters into url form
@@ -63,13 +63,13 @@ class GoogleStreetView:
         if not os.path.isdir(folder_name):
             os.makedirs(folder_name)
             
-        print ("Updated Download Path", self.download_path)
+        # print ("Updated Download Path", self.download_path)
                 
     def download_image(self, name):
         self.encode_url()
         file_path = os.path.join(self.download_path, name + '.jpg')
-        print("File Path With Name: ", file_path)
-        print("Encoded URL: ", self.links[0])
+        # print("File Path With Name: ", file_path)
+        # print("Encoded URL: ", self.links[0])
         helpers.download(self.links[0], file_path)
 
 
