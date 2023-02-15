@@ -56,7 +56,7 @@ class GrabData(object):
                 repeat += 1
 
     def getMetaData(self, dir):
-        files = os.listdir(dir+"Meta_Data")
+        files = os.listdir(dir+"Meta_Data/")
 
         for file in files:
             with open(dir+"Meta_Data/"+file) as f:
@@ -66,5 +66,5 @@ class GrabData(object):
 if __name__ == "__main__":
 
     data = GrabData()
-    data.getMetaData(r"/Users/tylermccue/Downloads/Grand Canyon/")
-    data.GrabMultImg([36.215296, -112.310393],[0.1, 0.1],r"/Users/tylermccue/Downloads/Grand Canyon/", 1000)
+    data.getMetaData(r"/Users/Damond/Desktop/WINTER 2023/CSC487/Deep-Learning-Project/train/yellowstone/")
+    data.GrabMultImg([44.767234, -110.461988], [0.03, 0.03], r"/Users/Damond/Desktop/WINTER 2023/CSC487/Deep-Learning-Project/train/yellowstone/", 1000)
