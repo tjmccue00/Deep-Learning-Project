@@ -1,6 +1,7 @@
 import StreetViewAPI as sv
 import random as rng
 import json
+import os
 
 def get_RG_Coords(coords, ranges):
     x = rng.random()
@@ -46,14 +47,24 @@ class GrabData(object):
             coords = str(lat)+","+str(lon)
             print(coords)
             bool = self.GrabImg(coords, directory, str(img_count))
-            print(bool)
+            print(img_count)
+            print('\n')
             if bool:
                 img_count += 1
                 repeat = 0
             else:
                 repeat += 1
 
+    def getMetaData(self, dir):
+        files = os.listdir(dir+"Meta_Data")
+
+        for file in files:
+            with open(dir+"Meta_Data/"+file) as f:
+                meta = json.load(f)
+            self.current_data_ids.append(meta['pano_id'])
+
 if __name__ == "__main__":
 
     data = GrabData()
-    data.GrabMultImg([36.11486216422, -112.1501713982],[0.02, 0.02],r"/Users/tylermccue/Downloads/", 15)
+    data.getMetaData(r"/Users/tylermccue/Downloads/Grand Canyon/")
+    data.GrabMultImg([36.215296, -112.310393],[0.1, 0.1],r"/Users/tylermccue/Downloads/Grand Canyon/", 1000)
