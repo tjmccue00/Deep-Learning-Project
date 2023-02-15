@@ -17,7 +17,7 @@ class GrabData(object):
 
     def __init__(self):
 
-        api_key = "AIzaSyAcbe0rC7u6aI-asYUOysQGzveaXaYZYFM"
+        api_key = "AIzaSyC6QQyvk9Ur_tMQPQ_CvnYzc5n73mydpto"
         self.StreetView = sv.GStreetViewer(api_key)
         self.current_data_ids = []
 
@@ -39,7 +39,7 @@ class GrabData(object):
             return False
 
     def GrabMultImg(self, location, ranges, directory, max_img):
-        img_count = 0
+        img_count = 1000
         repeat = 0
 
         while img_count < max_img and repeat < 15:
@@ -66,5 +66,5 @@ class GrabData(object):
 if __name__ == "__main__":
 
     data = GrabData()
-    data.getMetaData(r"/Users/Damond/Desktop/WINTER 2023/CSC487/Deep-Learning-Project/train/yellowstone/")
-    data.GrabMultImg([44.767234, -110.461988], [0.03, 0.03], r"/Users/Damond/Desktop/WINTER 2023/CSC487/Deep-Learning-Project/train/yellowstone/", 1000)
+    data.getMetaData(r"/Users/Damond/Desktop/WINTER 2023/CSC487/Deep-Learning-Project/train/brycecanyon/")
+    data.GrabMultImg([37.634877, -112.165765], [0.4, 0.4], r"/Users/Damond/Desktop/WINTER 2023/CSC487/Deep-Learning-Project/train/brycecanyon/", 1001)
