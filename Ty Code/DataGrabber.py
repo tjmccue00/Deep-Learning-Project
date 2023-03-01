@@ -22,13 +22,14 @@ class GrabData(object):
         self.current_data_ids = []
 
 
-    def GrabImg(self, location, directory, name):
-        pic_path = "{}pic_{}.jpg".format(directory, name.replace("/",""))
-        meta_path = "{}Meta_Data/meta_{}.json".format(directory, name.replace("/",""))
+    def GrabImg(self, location, directory):
 
-        meta_info, img_content = self.StreetView.get_pic(location, directory, name)
+        meta_info, img_content = self.StreetView.get_pic(location)
 
         if meta_info['status'] == "OK" and not meta_info['pano_id'] in self.current_data_ids:
+            pic_path = "{}pic_{}.jpg".format(directory, meta_info['pano_id'].replace("/",""))
+            meta_path = "{}Meta_Data/meta_{}.json".format(directory, meta_info['pano_id'].replace("/",""))
+
             with open(pic_path, 'wb') as file:
                     file.write(img_content)
             with open(meta_path, 'w') as file:
@@ -42,29 +43,29 @@ class GrabData(object):
         img_count = 0
         repeat = 0
 
-        while img_count < max_img and repeat < 15:
+        while len(self.current_data_ids) <= max_img and repeat < 15:
             lat,lon = get_RG_Coords(location, ranges)
             coords = str(lat)+","+str(lon)
-            print(coords)
-            bool = self.GrabImg(coords, directory, str(img_count))
-            print(img_count)
-            print('\n')
+            bool = self.GrabImg(coords, directory)
             if bool:
-                img_count += 1
                 repeat = 0
             else:
                 repeat += 1
+
+            print("Current Image Count: "+ str(len(self.current_data_ids)))
+            print("Current Repeat Count: "+ str(repeat)+"\n")
 
     def getMetaData(self, dir):
         files = os.listdir(dir+"Meta_Data")
 
         for file in files:
-            with open(dir+"Meta_Data/"+file) as f:
-                meta = json.load(f)
-            self.current_data_ids.append(meta['pano_id'])
+            if ".json" in file:
+                with open(dir+"Meta_Data/"+file) as f:
+                    meta = json.load(f)
+                self.current_data_ids.append(meta['pano_id'])
 
 if __name__ == "__main__":
 
     data = GrabData()
-    data.getMetaData(r"/Users/tylermccue/Downloads/Grand Canyon/")
-    data.GrabMultImg([36.215296, -112.310393],[0.1, 0.1],r"/Users/tylermccue/Downloads/Grand Canyon/", 1000)
+    data.getMetaData(r"/Users/tylermccue/Downloads/Everglades/")
+    data.GrabMultImg([25.671787, -81.195576],[0.375, 0.375],r"/Users/tylermccue/Downloads/Everglades/", 1000)

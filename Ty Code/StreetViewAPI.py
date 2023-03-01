@@ -20,7 +20,7 @@ class GStreetViewer(object):
         meta_response.close()
         return (status, meta_info)
 
-    def get_pic(self, location, directory, name):
+    def get_pic(self, location):
         status, meta_info = self.get_meta_data(location)
         
 
@@ -41,7 +41,7 @@ if __name__ == "__main__":
     api_key = ""
     picGrabber = GStreetViewer(api_key)
 
-    picGrabber.get_pic('800 21st St NW, Washington, DC 20052', r"/Users/tylermccue/Downloads/", "test")
+    picGrabber.get_pic('800 21st St NW, Washington, DC 20052')
 
     
 
