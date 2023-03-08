@@ -17,7 +17,7 @@ class GrabData(object):
 
     def __init__(self):
 
-        api_key = "AIzaSyAcbe0rC7u6aI-asYUOysQGzveaXaYZYFM"
+        api_key = "AIzaSyC6QQyvk9Ur_tMQPQ_CvnYzc5n73mydpto"
         self.StreetView = sv.GStreetViewer(api_key)
         self.current_data_ids = []
 
@@ -69,5 +69,8 @@ class GrabData(object):
 if __name__ == "__main__":
 
     data = GrabData()
-    data.getMetaData(r"/Users/tylermccue/Documents/GitHub/Deep-Learning-Project/GeoGuesser/Raw/Hawaii Volcanoes/")
-    data.GrabMultImg([19.380166, -154.974198],[0.175, 0.175],r"/Users/tylermccue/Documents/GitHub/Deep-Learning-Project/GeoGuesser/Raw/Hawaii Volcanoes/", 1000)
+    # data.getMetaData(r"/Users/tylermccue/Documents/GitHub/Deep-Learning-Project/GeoGuesser/Raw/Hawaii Volcanoes/")
+    # data.GrabMultImg([19.380166, -154.974198],[0.175, 0.175],r"/Users/tylermccue/Documents/GitHub/Deep-Learning-Project/GeoGuesser/Raw/Hawaii Volcanoes/", 1000)
+    data.getMetaData(r"/Users/Damond/Desktop/WINTER 2023/CSC487/Deep-Learning-Project/train/yosemite/")
+    data.GrabMultImg([37.965952, -119.540852], [0.375, 0.375],
+                     r"/Users/Damond/Desktop/WINTER 2023/CSC487/Deep-Learning-Project/train/yosemite/", 1000)
