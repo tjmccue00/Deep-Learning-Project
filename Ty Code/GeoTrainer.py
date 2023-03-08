@@ -74,7 +74,7 @@ print('Total Images for Everglades Validation: ', len(os.listdir(validation_glad
 print('Total Images for Everglades Testing: ', len(os.listdir(test_glades_dir)))
 
 load = True
-epochs = 5
+epochs = 25
 
 if not load:
     model = models.Sequential()

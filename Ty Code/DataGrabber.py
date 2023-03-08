@@ -64,8 +64,10 @@ class GrabData(object):
                     meta = json.load(f)
                 self.current_data_ids.append(meta['pano_id'])
 
+
+
 if __name__ == "__main__":
 
     data = GrabData()
-    data.getMetaData(r"/Users/tylermccue/Downloads/Everglades/")
-    data.GrabMultImg([25.671787, -81.195576],[0.375, 0.375],r"/Users/tylermccue/Downloads/Everglades/", 1000)
+    data.getMetaData(r"/Users/tylermccue/Documents/GitHub/Deep-Learning-Project/GeoGuesser/Raw/Hawaii Volcanoes/")
+    data.GrabMultImg([19.380166, -154.974198],[0.175, 0.175],r"/Users/tylermccue/Documents/GitHub/Deep-Learning-Project/GeoGuesser/Raw/Hawaii Volcanoes/", 1000)
