@@ -5,8 +5,8 @@ import matplotlib.pyplot as plt
 
 
 make_dir = False
-original_dataset_dir = r"/Users/tylermccue/Documents/GitHub/Deep-Learning-Project/GeoGuesser/Raw"
-base_dir = r"/Users/tylermccue/Documents/GitHub/Deep-Learning-Project/GeoGuesser"
+original_dataset_dir = r"C:\Users\Tyler\Documents\GitHub\Deep-Learning-Project\GeoGuesser\Raw"
+base_dir = r"C:\Users\Tyler\Documents\GitHub\Deep-Learning-Project\GeoGuesser"
 
 train_dir = os.path.join(base_dir, 'Training')
 validation_dir = os.path.join(base_dir, 'Validation')
@@ -73,8 +73,8 @@ print('Total Images for Everglades Training: ', len(os.listdir(train_glades_dir)
 print('Total Images for Everglades Validation: ', len(os.listdir(validation_glades_dir)))
 print('Total Images for Everglades Testing: ', len(os.listdir(test_glades_dir)))
 
-load = True
-epochs = 5
+load = False
+epochs = 100
 
 if not load:
     model = models.Sequential()
@@ -116,7 +116,7 @@ validation_generator = test_data_gen.flow_from_directory(validation_dir, target_
 
 history = model.fit(train_generator, steps_per_epoch=20, epochs=epochs, validation_data=validation_generator, validation_steps=6)
 
-model.save(r"/Users/tylermccue/Documents/GitHub/Deep-Learning-Project/GeoGuesser/Model")
+#model.save(r"/Users/tylermccue/Documents/GitHub/Deep-Learning-Project/GeoGuesser/Model")
 
 acc = history.history['accuracy']
 val_acc = history.history['val_accuracy']
